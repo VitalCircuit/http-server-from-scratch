@@ -35,7 +35,7 @@ curl -v http://127.0.0.1:8080/
 | # | 目标 | 状态 |
 |---|---|---|
 | M1 | 能接受连接、打印请求行、返回固定响应 | ✅ 已编译验证（gcc 13.3） |
-| M2 | 解析请求行与 headers，按 path 路由 | ⬜ |
+| M2 | 解析请求行与 headers，按 path 路由 | ⬜ [任务清单](docs/m2-checklist.md) |
 | M3 | 静态文件：200 / 404、Content-Length、Content-Type | ⬜ |
 | M4 | keep-alive 与读超时 | ⬜ |
 | M5 | epoll 非阻塞事件循环（替换阻塞 accept） | ⬜ |
@@ -46,9 +46,19 @@ curl -v http://127.0.0.1:8080/
 
 ```
 src/      源码
+tests/    回归测试（起真实进程 + curl 验收）
 bench/    压测脚本与结果
-docs/     设计笔记
+docs/     设计笔记与任务清单
 ```
+
+## 测试
+
+```sh
+sh tests/m2.sh        # 默认 8080 端口
+sh tests/m2.sh 9090   # 换端口
+```
+
+脚本会自己构建、起服务、逐条跑验收，最后打印通过/失败条数。退出码即失败条数，方便以后接 CI。
 
 ## 约定
 
