@@ -51,6 +51,10 @@ bench/    压测脚本与结果
 docs/     设计笔记与任务清单
 ```
 
+## 环境重建
+
+换电脑或环境崩了？照 [docs/env-setup.md](docs/env-setup.md) 重来一遍，约 10 分钟。
+
 ## 测试
 
 ```sh
